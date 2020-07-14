@@ -21,6 +21,31 @@ exports.readPosts = async (req, res) => {
   }
 }
 
+exports.createPost = async (req, res) => {
+  try {
+    const post = {...req.body};
+    if ((!post.title) || (!post.contents)) {
+      res.status(400).json({ 
+        message: 'Please provide title and contents for the post.'
+      })
+    } else {
+      const newPost = await db.insert(post);
+      res.status(201).json({
+        status: 'success',
+        post: newPost
+      })
+    }
+  }
+  catch(err) {
+    res
+      .status(500)
+      .json({
+        status: 'fail',
+        message: 'There was an error while saving the post to the database.'
+      })
+  }
+}
+
 exports.readPostById = async (req, res) => {
   try {
     const id = req.params.id;

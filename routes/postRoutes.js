@@ -4,7 +4,8 @@ const router = express.Router();
 
 router
   .route('/')
-  .get(postController.readPosts);
+  .get(postController.readPosts)
+  .post(postController.createPost);
 
 router
   .route('/:id')
