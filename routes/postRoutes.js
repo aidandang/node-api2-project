@@ -9,6 +9,8 @@ router
 
 router
   .route('/:id')
-  .get(postController.readPostById);
+  .get(postController.readPostById)
+  .delete(postController.deletePostById)
+  .put(postController.updatePostById);
 
 module.exports = router;
