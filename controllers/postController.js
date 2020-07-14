@@ -112,3 +112,27 @@ exports.updatePostById = async (req, res) => {
     })
   }
 }
+
+exports.readComments = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const comments = await db.findPostComments(id);
+
+    if (comments.length > 0) {
+      res.status(200).json({
+        status: "success",
+        comments
+      })
+    }
+    else {
+      res.status(404).json({
+        error: 'No comments found.'
+      })
+    }
+  }
+  catch {
+    res.status(500).json({
+      error: 'The comments information could not be retrieved.'
+    })
+  }
+}

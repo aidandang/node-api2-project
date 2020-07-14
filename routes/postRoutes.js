@@ -13,4 +13,8 @@ router
   .delete(postController.deletePostById)
   .put(postController.updatePostById);
 
+router
+  .route('/:id/comments')
+  .get(postController.readComments)
+
 module.exports = router;
