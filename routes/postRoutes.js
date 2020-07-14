@@ -4,6 +4,10 @@ const router = express.Router();
 
 router
   .route('/')
-  .get(postController.readPosts)
+  .get(postController.readPosts);
+
+router
+  .route('/:id')
+  .get(postController.readPostById);
 
 module.exports = router;

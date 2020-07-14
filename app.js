@@ -8,6 +8,6 @@ const postRouter = require('./routes/postRoutes');
 // Middlewares
 app.use(bodyParser.json());
 app.use(CORS());
-app.use('/api/post', postRouter);
+app.use('/api/posts', postRouter);
 
 module.exports = app;
